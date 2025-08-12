@@ -1,15 +1,21 @@
 from fastapi import FastAPI
-from typing import Optional
-from blog_app.schemas.schemas import BlogPost
-
+from routers import user_async, blog_async, authentication
+import models.models as models
+from database.database import engine
 
 app = FastAPI()
 
+# Run this at startup inside FastAPI's event loop
+@app.on_event("startup")
+async def init_models():
+    async with engine.begin() as conn:
+        await conn.run_sync(models.Base.metadata.create_all)
 
+# Include routers
+app.include_router(user_async.router)
+app.include_router(blog_async.router)
+app.include_router(authentication.router)
 
-app.post("/blog/create_blog_post")
-def create_blog_post(blog_post: BlogPost):
-    return {
-        "message": "Blog post created successfully",
-        "blog_post": blog_post
-    }
+@app.get("/")
+async def index():
+    return {"message": "Welcome to the FastAPI Blog App!"}
