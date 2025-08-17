@@ -40,7 +40,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import importlib
 
 DB_USER = "root"
-DB_PASSWORD = "Raj.dk8055$"
+DB_PASSWORD = "addpassword"
 DB_HOST = "localhost:3306"
 DB_NAME = "blogapp"
 
