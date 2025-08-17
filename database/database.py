@@ -20,7 +20,7 @@
 # from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 # from sqlalchemy.orm import sessionmaker, declarative_base
 
-# DATABASE_URL = "mysql+asyncmy://root:Raj.dk8055$@localhost:3306/blogapp"
+# DATABASE_URL = "mysql+asyncmy://root:addpassword$@localhost:3306/blogapp"
 
 # engine = create_async_engine(DATABASE_URL, echo=True, future=True)
 # Base = declarative_base()
